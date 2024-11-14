@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">계산기</string>
+    <string name="backpress_event_toast_msg">한번 더 누르면 종료룁니다.</string>
+    <string name="txt_length_over_msg">10자를 넘을 수 없습니다.</string>
+
+    <string name="nav_calculator_label">계산기</string>
+    <string name="nav_record_label">기록 관리</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+</resources>

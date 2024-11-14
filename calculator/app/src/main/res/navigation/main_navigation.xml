@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tool"
+    android:id="@+id/main_navigation.xml"
+    app:startDestination="@+id/nav_calculator">
+
+    <fragment
+        android:id="@+id/nav_calculator"
+        android:name="com.example.calculator.page.calculator.CalculatorFragment"
+        android:label="계산기">
+        <action
+            android:id="@+id/action_nav_calculator_to_nav_record"
+            app:destination="@id/nav_record"
+            app:enterAnim="@anim/anim_left_to_right_in"
+            app:exitAnim="@anim/anim_right_to_left_out"/>
+    </fragment>
+    <fragment
+        android:id="@+id/nav_record"
+        android:name="com.example.calculator.record.RecordFragment"
+        android:label="@string/nav_record_label">
+
+        <action
+            android:id="@+id/action_nav_record_to_nav_calculator"
+            app:destination="@id/nav_calculator"
+            app:enterAnim="@anim/anim_left_to_right_in"
+            app:exitAnim="@anim/anim_left_to_right_out"/>
+    </fragment>
+
+</navigation>

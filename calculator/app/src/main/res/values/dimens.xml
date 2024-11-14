@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="common_padding">16dp</dimen>
+
+    <dimen name="autosize_min_font_size">10sp</dimen>
+    <dimen name="autosize_step_font_size">2sp</dimen>
+
+    <dimen name="step_font_size">50sp</dimen>
+    <dimen name="result_font_size">35sp</dimen>
+
+    <dimen name="common_btn_border_radius">10dp</dimen>
+    <dimen name="common_btn_font_size">24dp</dimen>
+    <dimen name="common_btn_font_size_symbol">28dp</dimen>
+
+    <dimen name="list_item_result_font_size">22sp</dimen>
+    <dimen name="list_item_step_font_size">16sp</dimen>
+    <dimen name="list_item_empty_font_size">18sp</dimen>
+
+    <dimen name="loading_progressbar_size">36dp</dimen>
+
+
+</resources>

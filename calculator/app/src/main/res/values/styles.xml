@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="basicTextView">
+        <item name="android:fontFamily">@font/namumsquare</item>
+        <item name="android:textFontWeight">800</item>
+        <item name="android:textAlignment">textEnd</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:autoSizeStepGranularity">@dimen/autosize_step_font_size</item>
+        <item name="android:autoSizeMinTextSize">@dimen/autosize_min_font_size</item>
+        <item name="android:autoSizeTextType">uniform</item>
+    </style>
+
+    <style name="basicButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:textSize">@dimen/common_btn_font_size</item>
+        <item name="android:fontFamily">@font/namumsquare</item>
+        <item name="android:textFontWeight">700</item>
+        <item name="android:textColor">@color/btnBasicTxtColor</item>
+    </style>
+
+    <style name="typeButtonStyle1" parent="basicButton">
+        <item name="android:textColor">@color/btnType1TxtColor</item>
+        <item name="android:textSize">@dimen/common_btn_font_size_symbol</item>
+    </style>
+
+    <style name="typeButtonStyle2" parent="basicButton">
+        <item name="android:textColor">@color/btnType2TxtColor</item>
+        <item name="android:textSize">@dimen/common_btn_font_size_symbol</item>
+    </style>
+
+    <style name="typeButtonStyle3" parent="basicButton">
+        <item name="android:backgroundTint">@color/btnType3BackgroundTxtColor</item>
+        <item name="android:textColor">@color/btnType3TxtColor</item>
+        <item name="android:textSize">@dimen/common_btn_font_size_symbol</item>
+    </style>
+
+    <style name="basicButtonRounded">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/common_btn_border_radius</item>
+    </style>
+
+
+</resources>

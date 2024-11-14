@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#EDEEF0</color>
+    <color name="colorPrimaryDark">#FFFFFF</color>
+    <color name="backgroundColor">#FFFFFF</color>
+
+    <color name="txtColorStep">#444347</color>
+    <color name="txtColorResult">#8D8C91</color>
+
+    <color name="btnBasicTxtColor">#39383B</color>
+    <color name="btnType1TxtColor">#4D8223</color>
+    <color name="btnType2TxtColor">#BB4D43</color>
+    <color name="btnType3BackgroundTxtColor">#5DA532</color>
+    <color name="btnType3TxtColor">#FFFFFF</color>
+
+    <color name="navBackground">#FAFAFA</color>
+
+    <color name="progressbarColor">#444347</color>
+
+</resources>
