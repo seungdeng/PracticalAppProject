@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="detail_common_padding">20dp</dimen>
+    <dimen name="detail_img_height">100dp</dimen>
+    <dimen name="detail_content_title_width">90dp</dimen>
+</resources>
