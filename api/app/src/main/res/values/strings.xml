@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">e약은요</string>
+
+    <string name="nav_list_label">의약품 검색</string>
+    <string name="nav_detail_label">상세 정보</string>
+
+    <string name="backpress_event_toast_msg">한번 더 누르면 종료됩니다.</string>
+
+    <string-array name="search_options">
+        <item>제품명</item>
+        <item>업체명</item>
+        <item>효능</item>
+    </string-array>
+</resources>
