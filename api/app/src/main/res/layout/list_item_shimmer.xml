@@ -6,7 +6,6 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/li_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardBackgroundColor="@color/colorWhite"
@@ -27,75 +26,64 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:paddingTop="20dp"
-                        android:paddingBottom="0dp"
                         android:paddingLeft="20dp"
                         android:paddingRight="20dp"
+                        android:paddingBottom="0dp"
                         android:orientation="vertical">
                             <TextView
-                                android:id="@+id/li_itemSeq"
-                                android:layout_width="wrap_content"
+                                android:layout_width="100dp"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@font/nanumsquare"
-                                android:textFontWeight="600"
                                 android:paddingLeft="10dp"
                                 android:paddingRight="10dp"
                                 android:paddingTop="4dp"
                                 android:paddingBottom="4dp"
-                                android:background="@drawable/list_list_item_corner"
-                                android:textSize="12sp"
-                                android:textColor="@color/baseColor2"
-                                android:text="No.199800765"/>
+                                android:background="@color/bg_shimmer_color"
+                                android:fontFamily="@font/nanumsquare"
+                                android:textSize="12sp"/>
                             <TextView
-                                android:id="@+id/li_itemName"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:paddingTop="14dp"
-                                android:paddingBottom="6dp"
-                                android:breakStrategy="simple"
+                                android:layout_marginTop="14dp"
+                                android:layout_marginBottom="6dp"
+                                android:background="@color/bg_shimmer_color"
                                 android:fontFamily="@font/nanumsquare"
-                                android:textFontWeight="800"
-                                android:textColor="@color/txtColorBlack"
-                                android:textSize="15sp"
-                                android:text="라미핀크림(테르비나핀염산염)"/>
+                                android:textSize="15sp"/>
                             <TextView
-                                android:id="@+id/li_entpName"
-                                android:layout_width="match_parent"
+                                android:layout_width="200dp"
                                 android:layout_height="wrap_content"
+                                android:background="@color/bg_shimmer_color"
                                 android:fontFamily="@font/nanumsquare"
-                                android:maxLines="1"
-                                android:textFontWeight="600"
-                                android:textColor="@color/txtColorBlack3"
-                                android:textSize="14sp"
-                                android:text="코오롱제약(주)"/>
+                                android:textSize="14sp"/>
                         </LinearLayout>
-                        <de.hdodenhof.circleimageview.CircleImageView
-                            android:id="@+id/li_image"
+                        <ImageView
                             android:layout_marginTop="16dp"
                             android:layout_marginEnd="16dp"
                             android:layout_width="70dp"
                             android:layout_height="70dp"
-                            android:src="@drawable/img_thumbnail"/>
+                            android:background="@drawable/list_item_shimmer_corner"/>
                 </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:paddingTop="10dp"
-                android:paddingBottom="20dp"
                 android:paddingLeft="20dp"
-                android:paddingRight="20dp">
-                    <TextView
-                        android:id="@+id/li_efcyQesitm"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:breakStrategy="simple"
-                        android:maxLines="3"
-                        android:ellipsize="end"
-                        android:fontFamily="@font/nanumsquare"
-                        android:textFontWeight="600"
-                        android:textColor="@color/txtColorBlack2"
-                        android:textSize="13sp"
-                        android:text="이 약은 족부백선, 고부백선(완선), 체부백선과 같은 피부사상균에 의한 피부진균감염증과 Pityrosporum orbiculare (Malassezia furfur)에 의한 어루러기, 피부칸디다증에 사용합니다."/>
+                android:paddingRight="20dp"
+                android:paddingBottom="20dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:background="@color/bg_shimmer_color"
+                    android:fontFamily="@font/nanumsquare"
+                    android:textSize="13sp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:background="@color/bg_shimmer_color"
+                    android:fontFamily="@font/nanumsquare"
+                    android:textSize="13sp"/>
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
@@ -109,17 +97,14 @@
                         <ImageView
                             android:layout_width="20dp"
                             android:layout_height="20dp"
+                            android:contentDescription="시계 이미지"
                             android:src="@drawable/img_clock"/>
                         <TextView
-                            android:id="@+id/li_updateDe"
-                            android:layout_width="match_parent"
+                            android:layout_width="100dp"
                             android:layout_height="match_parent"
-                            android:gravity="center_vertical"
+                            android:background="@color/bg_shimmer_color"
                             android:fontFamily="@font/nanumsquare"
-                            android:textFontWeight="600"
-                            android:textColor="@color/txtColorBlack3"
-                            android:textSize="12sp"
-                            android:text="2024-04-02"/>
+                            android:textSize="12sp"/>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

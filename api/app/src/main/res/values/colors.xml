@@ -13,4 +13,6 @@
     <color name="txtColorBlack3">#C6C6C6</color>
 
     <color name="colorWhite">#FFFFFF</color>
+
+    <color name="bg_shimmer_color">#BBBBBB</color>
 </resources>

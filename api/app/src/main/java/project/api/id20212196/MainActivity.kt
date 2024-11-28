@@ -1,11 +1,16 @@
 package project.api.id20212196
 
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -31,9 +36,25 @@ class MainActivity : AppCompatActivity(), MainAdapter.OnItemClickListener {
     private var CURRENT_PAGE = 1
     private var LAST_PAGE = 1
 
+    private lateinit var SEARCH_OPTIONS: Array<String>
+    private var SEARCH_OPTION_INDEX: Int = 0
+    private var SEARCH_KEYWORD: String = ""
 
     override fun onItemClick(item: Item){
-        Toast.makeText(this,item.itemName,Toast.LENGTH_SHORT).show()
+        val intent = Intent(this,DetailActivity::class.java)
+        intent.putExtra("entpName",item.entpName)
+        intent.putExtra("itemName",item.itemName)
+        intent.putExtra("itemSeq", item.itemSeq)
+        intent.putExtra("efcyQesitm", item.efcyQesitm)
+        intent.putExtra("useMethodQesitm",item.useMethodQesitm)
+        intent.putExtra("atpnWarnQesitm",item.atpnWarnQesitm)
+        intent.putExtra("atpnQesitm",item.atpnQesitm)
+        intent.putExtra("intrcQesitm",item.intrcQesitm)
+        intent.putExtra("seQesitm",item.seQesitm)
+        intent.putExtra("depositMethodQesitm",item.depositMethodQesitm)
+        intent.putExtra("updateDe",item.updateDe)
+        intent.putExtra("itemImage", item.itemImage)
+        startActivity(intent)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,6 +63,19 @@ class MainActivity : AppCompatActivity(), MainAdapter.OnItemClickListener {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        SEARCH_OPTIONS = resources.getStringArray(R.array.search_options)
+
+        binding.inKeyword.setOnEditorActionListener{v, actionId, event->
+            if(actionId==EditorInfo.IME_ACTION_SEARCH){
+                searchSubmit()
+                true
+            }else{
+                false
+            }
+        }
+        binding.btnSubmit.setOnClickListener{searchSubmit()}
+        binding.inOptionsSelected.setOnClickListener{showDialog()}
 
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
@@ -95,17 +129,36 @@ class MainActivity : AppCompatActivity(), MainAdapter.OnItemClickListener {
     private fun loadData(page: Int=1){
         if (PAGE_INIT){
             showLoading()
+        }else{
+            adapter.setLoading(true)
         }
 
         lifecycleScope.launch {
             try{
-                val data:ApiResponse = ApiManager.getService().getDrugList()
+                val data:ApiResponse
+                if(SEARCH_KEYWORD =="")
+                {
+                    data = ApiManager.getService().getDrugList(pageNo = page)
+                }else{
+                    when(SEARCH_OPTION_INDEX){
+                        0 -> data = ApiManager.getService().getDrugList(pageNo = page, itemName = SEARCH_KEYWORD)
+                        1 -> data = ApiManager.getService().getDrugList(pageNo = page, entpName = SEARCH_KEYWORD)
+                        2 -> data = ApiManager.getService().getDrugList(pageNo = page, efcyQesitm = SEARCH_KEYWORD)
+                        else -> data = ApiManager.getService().getDrugList(pageNo = page)
+
+
+                    }
+                }
+
                 if (data.header.resultCode =="00")
                 {
                     if(data.body.items != null)
                     {
                         CURRENT_PAGE = data.body.pageNo
                         LAST_PAGE = (data.body.totalCount / data.body.numOfRows)+1
+                        if(adapter.getLoading()){
+                            adapter.setLoading(false)
+                        }
                         adapter.addItems(data.body.items.toMutableList())
                     }
                 }else{
@@ -120,7 +173,10 @@ class MainActivity : AppCompatActivity(), MainAdapter.OnItemClickListener {
                 }
 
                 if(IS_PAGE_LOADING){
-                    IS_PAGE_LOADING=false
+                    if(adapter.getLoading()){
+                        adapter.setLoading(false)
+                    }
+                    IS_PAGE_LOADING = false
                 }
             }
         }
@@ -129,30 +185,48 @@ class MainActivity : AppCompatActivity(), MainAdapter.OnItemClickListener {
     private fun showLoading(){
         binding.layoutLoading.visibility = View.VISIBLE
         binding.listView.visibility = View.INVISIBLE
+
+        binding.layoutShimmer.startShimmer()
+        binding.layoutShimmer.visibility = View.VISIBLE
     }
 
     private fun hideLoading(){
         binding.listView.visibility = View.VISIBLE
         binding.layoutLoading.visibility = View.INVISIBLE
+
+        binding.layoutShimmer.visibility = View.INVISIBLE
+        binding.layoutShimmer.stopShimmer()
     }
 
+    private fun searchSubmit(){
+        if (!PAGE_INIT && !IS_PAGE_LOADING){
+            hideKeyboard()
+            SEARCH_KEYWORD = binding.inKeyword.text.toString()
+            PAGE_INIT = true
+            CURRENT_PAGE = 1
+            LAST_PAGE = 1
+            loadData(CURRENT_PAGE)
+            adapter.clearItems()
+        }
+    }
 
+    private fun hideKeyboard(){
+        binding.listView.requestFocus()
+        var inputManager = this.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputManager.hideSoftInputFromWindow(this.currentFocus!!.windowToken,InputMethodManager.HIDE_NOT_ALWAYS)
+    }
 
+    private fun showDialog(){
+        hideKeyboard()
+        var builder = AlertDialog.Builder(this)
+        builder.setTitle("검색 옵션을 선택하세요.")
+            .setItems(SEARCH_OPTIONS){dialog, which ->
+                SEARCH_OPTION_INDEX = which
+                binding.inOption.text = SEARCH_OPTIONS[which]
+            }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        val alterDialog = builder.create()
+        alterDialog.show()
+    }
 
 }
